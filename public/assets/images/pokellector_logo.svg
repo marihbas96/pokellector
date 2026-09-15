@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="700" viewBox="0 0 1600 700" role="img" aria-labelledby="title desc">
+  <title id="title">Pokéllector logo</title>
+  <desc id="desc">A simple transparent logo for a collection app featuring a Poké Ball inspired icon, stacked collection cards, and the word Pokéllector.</desc>
+
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFE45A"/>
+      <stop offset="1" stop-color="#F6B800"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FF4A4A"/>
+      <stop offset="1" stop-color="#E51D2A"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#07142D" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- Collection cards -->
+  <g transform="translate(78 95)" filter="url(#shadow)">
+    <rect x="52" y="40" width="238" height="320" rx="28" fill="#0D47A1" stroke="#0A1B42" stroke-width="18" transform="rotate(-12 171 200)"/>
+    <rect x="108" y="18" width="238" height="320" rx="28" fill="#1565C0" stroke="#0A1B42" stroke-width="18" transform="rotate(8 227 178)"/>
+
+    <!-- Main ball icon -->
+    <g transform="translate(145 78)">
+      <circle cx="125" cy="125" r="118" fill="#FFFFFF" stroke="#0A1B42" stroke-width="18"/>
+      <path d="M7 125 A118 118 0 0 1 243 125 Z" fill="url(#red)"/>
+      <rect x="10" y="108" width="230" height="34" rx="17" fill="#0A1B42"/>
+      <circle cx="125" cy="125" r="44" fill="#FFFFFF" stroke="#0A1B42" stroke-width="18"/>
+      <circle cx="125" cy="125" r="20" fill="#DDE6F5"/>
+    </g>
+
+    <!-- Collection sparkle -->
+    <path d="M385 52 L398 85 L431 98 L398 111 L385 144 L372 111 L339 98 L372 85 Z" fill="url(#gold)" stroke="#0A1B42" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="420" cy="176" r="10" fill="#F6B800"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(520 168)">
+    <text x="0" y="250"
+      font-family="Arial Rounded MT Bold, Trebuchet MS, Arial, sans-serif"
+      font-size="238"
+      font-weight="900"
+      letter-spacing="-10"
+      fill="url(#gold)"
+      stroke="#0A1B42"
+      stroke-width="28"
+      paint-order="stroke fill"
+      stroke-linejoin="round">Pokéllector</text>
+
+    <!-- subtle inner highlight -->
+    <text x="0" y="235"
+      font-family="Arial Rounded MT Bold, Trebuchet MS, Arial, sans-serif"
+      font-size="238"
+      font-weight="900"
+      letter-spacing="-10"
+      fill="none"
+      stroke="#FFF4A6"
+      stroke-opacity="0.55"
+      stroke-width="5"
+      stroke-linejoin="round">Pokéllector</text>
+
+    <!-- collection underline -->
+    <path d="M28 320 C315 370 730 370 1015 320" fill="none" stroke="#0A1B42" stroke-width="30" stroke-linecap="round"/>
+    <path d="M28 320 C315 370 730 370 1015 320" fill="none" stroke="#F6B800" stroke-width="14" stroke-linecap="round"/>
+
+    <!-- tiny collection dots -->
+    <circle cx="1060" cy="316" r="14" fill="#E51D2A" stroke="#0A1B42" stroke-width="7"/>
+    <circle cx="1104" cy="316" r="14" fill="#1565C0" stroke="#0A1B42" stroke-width="7"/>
+    <circle cx="1148" cy="316" r="14" fill="#F6B800" stroke="#0A1B42" stroke-width="7"/>
+  </g>
+</svg>
