@@ -2,9 +2,9 @@
 
 import { CreateUserParams, UpdateUserParams } from "@/types";
 import { handleError } from "../utils";
-import { connectToDatabase } from "../mongodb/database";
-import User from "../mongodb/database/models/user.model";
-import Collection from "../mongodb/database/models/collection.model";
+import { connectToDatabase } from "../database/index";
+import User from "../database/models/user.model";
+import Collection from "../database/models/collection.model";
 import { revalidatePath } from "next/cache";
 
 export const createUser = async (user: CreateUserParams) => {
