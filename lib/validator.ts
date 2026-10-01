@@ -1,10 +1,16 @@
 import * as z from "zod"
 
 export const collectionsFormSchema = z.object({
-  isGraded: z.string(),
-  isGem: z.string(),
-  isRaw: z.string(),
-  isSet: z.string(),
-  isLang: z.string(),
-  name: z.string().min(3, "Collection title must be at least 3 characters."),
+  isGraded: z.string().min(1, {message: " "}),
+  isGem: z.string().min(1, {message: " "}),
+  isRaw: z.string().min(1, {message: " "}),
+  isSet: z.string().min(1, {message: " "}),
+  isLang: z.string().min(1, {message: " "})
+}).superRefine((data, ctx) => {
+  if (data.isGraded === "yes" && !data.isGem) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["isGem"],
+    });
+  }
 })

@@ -17,7 +17,7 @@ type GemDropdownProps = {
 
 const GemDropdown = ({ value, onChangeHandler }: GemDropdownProps) => {
   return (
-    <Select onValueChange={onChangeHandler} defaultValue={value}>
+    <Select onValueChange={onChangeHandler} value={value}>
         <SelectTrigger className="selectfield">
             <SelectValue placeholder="Gem" />
         </SelectTrigger>
