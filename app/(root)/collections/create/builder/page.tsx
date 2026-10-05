@@ -1,9 +1,7 @@
-import CollectionForm from '@/components/shared/CollectionForm'
 import { auth } from '@clerk/nextjs'
-
 import React from 'react'
 
-const createCollection = () => {
+const createBuilder = () => {
     const { sessionClaims } = auth()
 
     // what does the ? do after sessionClaims below...
@@ -11,9 +9,9 @@ const createCollection = () => {
 
     return (
         <div className="wrapper my-8">
-            <CollectionForm userId={userId} type="Create" />
+            Builder
         </div>
     )
 }
 
-export default createCollection
+export default createBuilder
