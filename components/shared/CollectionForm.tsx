@@ -45,16 +45,16 @@ const CollectionForm = ({userId, type} : CollectionFormProps) => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit, (errors) => {
         console.log("VALIDATION ERRORS:", errors)
-      })} className="flex flex-col gap-5">
-        <div className="flex flex-row justify-between"> {/* form box */}
-          <div className="flex flex-col gap-5 w-2/3">
-            <div className="flex flex-row gap-5">
+      })} className="flex flex-col gap-5 items-center">
+        <div className="w-3/4 md:w-4/5 min-h-64"> {/* form box */}
+          <div className="flex flex-col items-center gap-5 lg:flex-row lg:gap-8 lg:items-baseline">
+            <div className="flex flex-col gap-5 w-2/3 md:w-1/2 lg:w-1/3">
               {/* graded collection?*/}
               <FormField
                 control={form.control}
                 name="isGraded"
                 render={({ field }) => (
-                  <FormItem className="w-1/3">
+                  <FormItem className="">
                     <FormLabel>Is this a graded collection?*</FormLabel>
                     <FormControl>
                       <GradedDropdown onChangeHandler={field.onChange} value={field.value} />
@@ -69,7 +69,7 @@ const CollectionForm = ({userId, type} : CollectionFormProps) => {
                   control={form.control}
                   name="isGem"
                   render={({ field }) => (
-                    <FormItem className="w-1/3">
+                    <FormItem className="">
                       <FormLabel>Are we talking GEM Mint!?*</FormLabel>
                       <FormControl>
                         <GemDropdown onChangeHandler={field.onChange} value={field.value} />
@@ -85,7 +85,7 @@ const CollectionForm = ({userId, type} : CollectionFormProps) => {
               control={form.control}
               name="isSet"
               render={({ field }) => (
-                <FormItem className="w-1/3">
+                <FormItem className="w-2/3 md:w-1/2 lg:w-1/3">
                   <FormLabel>We going for the full set?*</FormLabel>
                   <FormControl>
                     <SetDropdown onChangeHandler={field.onChange} value={field.value} />
@@ -99,7 +99,7 @@ const CollectionForm = ({userId, type} : CollectionFormProps) => {
               control={form.control}
               name="isLang"
               render={({ field }) => (
-                <FormItem className="w-1/3">
+                <FormItem className="w-2/3 md:w-1/2 lg:w-1/3">
                   <FormLabel>Chasing any prints? Or we universal*</FormLabel>
                   <FormControl>
                     <LangDropdown onChangeHandler={field.onChange} value={field.value} />                    
@@ -111,7 +111,8 @@ const CollectionForm = ({userId, type} : CollectionFormProps) => {
           </div>
         </div>
         <Button type="submit" size="lg" disabled={form.formState.isSubmitting}
-          className="w-1/4 bg-[#FFCB05] transition-colors hover:bg-[#3B4CCA]">{form.formState.isSubmitting ? ('Submitting...'): 'Start building'}</Button>
+          className="w-1/4 mt-8 bg-[#0D63A5] transition-colors hover:bg-[#083358]">{form.formState.isSubmitting ? ('Submitting...'): 'Start building'}
+        </Button>
       </form>
     </Form>
   )
