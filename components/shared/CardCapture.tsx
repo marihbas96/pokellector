@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type CardCaptureProps = {
     verified: boolean
@@ -27,15 +27,27 @@ const CardCapture = ({verified} : CardCaptureProps) => {
 
             streamRef.current = stream;
 
-            if (videoRef.current) {
-                videoRef.current.srcObject = stream;
-            }
+            // if (videoRef.current) {
+            //     videoRef.current.srcObject = stream;
+            // }
 
             setCameraActive(true);
         } catch (error) {
             console.error("Could not access the camera:", error);
         }
     }
+
+    useEffect(() => {
+        if (!cameraActive || !videoRef.current || !streamRef.current) {
+            return;
+        }
+
+        videoRef.current.srcObject = streamRef.current;
+
+        videoRef.current.play().catch((error) => {
+            console.error("Could not start video playback: ", error)
+        });
+    }, [cameraActive]);
 
     const takePhoto = () => {
         const video = videoRef.current;
