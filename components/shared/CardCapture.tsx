@@ -12,6 +12,7 @@ const CardCapture = ({verified} : CardCaptureProps) => {
     // stream and video objects
     const videoRef = useRef<HTMLVideoElement>(null);
     const streamRef = useRef<MediaStream | null>(null);
+    const canvasRef = useRef<HTMLCanvasElement>(null);
 
     const [cameraActive, setCameraActive] = useState(false);
 
@@ -36,6 +37,38 @@ const CardCapture = ({verified} : CardCaptureProps) => {
         }
     }
 
+    const takePhoto = () => {
+        const video = videoRef.current;
+        const canvas = canvasRef.current;
+
+        if (!video || !canvas) return;
+
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+
+        const context = canvas.getContext("2d");
+
+        context?.drawImage(video,0,0,canvas.width,canvas.height);
+
+        canvas.toBlob(
+            (blob) => {
+                if (!blob) return;
+
+                const imageFile = new File(
+                    [blob],
+                    "card-image.jpg",
+                    {
+                        type: "image/jpeg",
+                    }
+                );
+
+                console.log(imageFile);
+            },
+            "image/jpeg",
+            0.9   
+        );
+    };
+
     return (
         <div className="flex flex-col items-center">
             {
@@ -47,6 +80,13 @@ const CardCapture = ({verified} : CardCaptureProps) => {
             }
 
             <video ref={videoRef} autoPlay playsInline/>
+            {
+                !cameraActive && (
+                    <Button onClick={takePhoto} size="lg" className="w-1/4 mt-8 bg-[#0D63A5] transition-colors hover:bg-[#083358]">
+                        Take picture
+                    </Button>
+                )
+            }
         </div>
     )
 }
