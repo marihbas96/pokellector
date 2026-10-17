@@ -75,16 +75,20 @@ const CardCapture = ({verified} : CardCaptureProps) => {
                 );
 
                 console.log(imageFile);
+
+                // exit camera stream
+                streamRef.current?.getTracks().forEach((track) => track.stop());
+                streamRef.current = null;
+
+                if (videoRef.current) {
+                    videoRef.current.srcObject = null;
+                }
+
+                setCameraActive(false);
             },
             "image/jpeg",
             0.9   
         );
-
-        // exit camera stream
-        streamRef.current?.getTracks().forEach((track) => track.stop());
-
-        streamRef.current = null;
-        setCameraActive(false);
     };
 
     return (
@@ -95,8 +99,8 @@ const CardCapture = ({verified} : CardCaptureProps) => {
                         Add card
                     </Button>
                 ) :
-                <div className="relative">
-                    <video ref={videoRef} autoPlay playsInline className="w-full"/>
+                <div className="relative w-full max-w-md">
+                    <video ref={videoRef} autoPlay playsInline className="block w-full"/>
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                         <div className="w-64 aspect-[2.5/3.5] border-2 rounded-xl"> </div>
                     </div>
