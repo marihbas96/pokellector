@@ -1,5 +1,8 @@
+
 import { auth } from '@clerk/nextjs'
 import React from 'react'
+
+import CardCapture from '@/components/shared/CardCapture';
 
 const createBuilder = () => {
     const { sessionClaims } = auth()
@@ -9,7 +12,7 @@ const createBuilder = () => {
 
     return (
         <div className="wrapper my-8">
-            Builder
+            <CardCapture verified={false} />
         </div>
     )
 }
