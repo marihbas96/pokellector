@@ -76,26 +76,22 @@ const CardCapture = ({verified} : CardCaptureProps) => {
     };
 
     return (
-        <div className="flex flex-col items-center relative">
+        <div className="flex flex-col items-center">
             {
-                !cameraActive && (
+                !cameraActive ? (
                     <Button onClick={startCamera} size="lg" className="w-1/4 mt-8 bg-[#0D63A5] transition-colors hover:bg-[#083358]">
                         Add card
                     </Button>
-                )
-            }
-
-            <video ref={videoRef} autoPlay playsInline className="w-full"/>
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-64 aspect-[2.5/3.5] border-2 rounded-xl">
-                </div>
-            </div>
-            {
-                cameraActive && (
+                ) :
+                <div className="relative">
+                    <video ref={videoRef} autoPlay playsInline className="w-full"/>
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div className="w-64 aspect-[2.5/3.5] border-2 rounded-xl"> </div>
+                    </div>
                     <Button onClick={takePhoto} size="lg" className="w-1/4 mt-8 bg-[#0D63A5] transition-colors hover:bg-[#083358]">
                         Take picture
                     </Button>
-                )
+                </div>
             }
         </div>
     )
