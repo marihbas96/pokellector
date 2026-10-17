@@ -67,6 +67,12 @@ const CardCapture = ({verified} : CardCaptureProps) => {
             "image/jpeg",
             0.9   
         );
+
+        // exit camera stream
+        streamRef.current?.getTracks().forEach((track) => track.stop());
+
+        streamRef.current = null;
+        setCameraActive(false);
     };
 
     return (
@@ -81,7 +87,7 @@ const CardCapture = ({verified} : CardCaptureProps) => {
 
             <video ref={videoRef} autoPlay playsInline/>
             {
-                !cameraActive && (
+                cameraActive && (
                     <Button onClick={takePhoto} size="lg" className="w-1/4 mt-8 bg-[#0D63A5] transition-colors hover:bg-[#083358]">
                         Take picture
                     </Button>
